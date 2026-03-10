@@ -347,17 +347,3 @@ errors are categorised on x.yy, where x is the category and yy is the error numb
 > 7.yy - misc. error  
 - 1 - UUID already exists  
 - 2 - Generic registration error  
-
-> 2.yy - User/validation error
-- 1 - Invalid credentials
-- 2 - User already registered
-- 3 - clinic doesn't exist
-- 4 - User doesn't exist //deletion
-
-> 3.yy - connection/infrastructure error
-
-> 4.yy - security/authorisation error
-
-> 7.yy - misc. error
-- 1 - UUID already exists
-- 2 - Generic registration error
