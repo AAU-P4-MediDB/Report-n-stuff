@@ -320,7 +320,7 @@ Entries follow a X.Y.Z hierarchy:
 > Exp. Response:
 0 | success
 
-# 4.y.z - External
+# 4.y.z - Supreme Admin
 //rev2
 
 # Error codes
