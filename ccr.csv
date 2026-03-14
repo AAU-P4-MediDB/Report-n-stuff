@@ -1,0 +1,7 @@
+Column name,Type,Constraints,Description,Note
+UUID,UUID,PRIMARY KEY,UUID of clinic,
+NAME,TEXT,NOT NULL. CHECK (LENGTH(NAME) < 1000),Name of clinic,
+LOCATION,TEXT,NOT NULL. CHECK (LENGTH(LOCATION) < 1000),Geographical location of clinic,
+EMAIL,TEXT,CHECK (LENGTH(EMAIL) < 100),Email of clinic,
+CVR,INTGER,NOT NULL. 0-99999999,CVR number of clinic,fallback if mail doesn't exist
+PHONE,INTGER,NOT NULL. 0-99999999,Phone number of clinic,Assumes all phone numbers are danish (+45)

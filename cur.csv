@@ -1,0 +1,10 @@
+Column name,Type,Constraints,Description,Note
+UUID,UUID,PRIMARY KEY,UUID of user,
+EMAIL,TEXT,NOT NULL. CHECK(LENGTH(EMAIL) < 200),Email of user,
+PASSWORD,TEXT,NOT NULL,Password of user,Should be hashed with argon2id
+SALT,TEXT,NOT NULL,Salt for Argon2ID password hashing algo,
+NAME,TEXT,NOT NULL. CHECK(LENGTH(NAME) < 1000),Name of user,
+POSITION,POS,NOT NULL,Position of user,Position as enum. Position will also determin admin rights
+PFP,TEXT,,Profile picture of user,Storage path to PFP
+CLINIC,UUID,FOREIGN KEY,Clinic associated with user,
+PHONE,INT,NOT NULL. 0-99999999,Phone number of user,Assumes all danish (+45)

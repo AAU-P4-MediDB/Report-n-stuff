@@ -1,0 +1,18 @@
+Column name,Type,Constraints,Description,Note
+UUID,UUID,PRIMARY KEY,UUID of patient,Not to be confused with CPR number
+NAME,TEXT,NOT NULL. (LENGTH(NAME) < 100),Name of patient,
+BIRTHDATE,DATE,NOT NULL,Birthdate of patient,First half of CPR number. DD/MM/YYYY
+CPR_KEY,INT,NOT NULL. 0-9999,Last bit of the CPR number,
+BIO_GENDER,BOOL,NOT NULL,The biological gender of the patient assigned at birth,
+PRONOUNS,TEXT,,Pronouns of patient,
+CLINIC,UUID,NOT NULL,UUID of main clinic associated with patient,
+DOCTOR,UUID,FOREIGN KEY (LUR),UUID of main doctor associated with patient,
+WEIGHT,DECIMAL,NOT NULL. WEIGHT>0,Weight of patient,
+HEIGHT,SMALL INT,NOT NULL. HEIGHT>0,Height of patient,
+DIAGNOSIS,TEXT[],,Diagnosis of patient,
+VITALS,JSON,NOT NULL,All vitals of patient,This includes pulse bloodtype etc
+PRESCRIPTIONS,JSON,,All prescriptions of patient,
+PFP,TEXT,,Path to patient pfp,
+JOURNAL,JSON,NOT NULL,Journal/Log of patient,
+APPOINTMENTS,JSON,,Appointments of patient,
+LAB_RESULTS,JSON,,Lab results of patient,
