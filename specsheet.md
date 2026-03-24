@@ -156,7 +156,7 @@ Entries follow an X.Y.Z hierarchy:
 \> Description: Registers a user on the system (not a patient)      
 \> Note: Should only be accessible by admins in Rev 3      
 \> Note: Implement RESTful in Rev 3      
-\> Endpoint: `/api/um/ac/register`      
+\> Endpoint: `POST /api/um/ac/register`      
 \> Request body:      
 ```json    
 {    
@@ -178,7 +178,7 @@ Entries follow an X.Y.Z hierarchy:
     
 ### 1.1.2 - User Login      
 \> Description: Logs in a user      
-\> Endpoint: `/api/um/ac/login`      
+\> Endpoint: `POST /api/um/ac/login`      
 \> Request body:      
 ```json    
 {    
@@ -196,7 +196,7 @@ Entries follow an X.Y.Z hierarchy:
 ## 1.2 - User Deletion      
 \> Description: Deletes a user      
 \> Note: Ensure only admins have access      
-\> Endpoint: `/api/um/{user}/del/`      
+\> Endpoint: `DELETE /api/um/{user}/del/`      
     
 \> Exp. Response:      
 `0 | success`    
@@ -205,7 +205,7 @@ Entries follow an X.Y.Z hierarchy:
     
 ## 1.3 - User Fetching      
 \> Description: Fetches data on a specified user      
-\> Endpoint: `/api/um/fetch`      
+\> Endpoint: `GET /api/um/fetch`      
 \> Request body:      
 ```json    
 {    
@@ -233,7 +233,7 @@ Entries follow an X.Y.Z hierarchy:
 ## 1.4 - User Password Reset      
 \> Description: Resets a user's password      
 \> Note: Should only be accessible by admins in Rev 3      
-\> Endpoint: `/api/um/{user}/reset`      
+\> Endpoint: `POST /api/um/{user}/reset`      
 \> Request body:      
 ```json    
 {    
@@ -254,7 +254,7 @@ Entries follow an X.Y.Z hierarchy:
 ## 2.1 - Patient Registration      
 \> Description: Registers a patient in the system      
 \> Note: Should only be accessible by admins in Rev 3      
-\> Endpoint: `/api/pm/reg`      
+\> Endpoint: `POST /api/pm/reg`      
 \> Request body:      
 ```json    
 {    
@@ -281,7 +281,7 @@ Entries follow an X.Y.Z hierarchy:
 ## 2.2 - Patient Deletion      
 \> Description: Deletes a patient      
 \> Note: Ensure only admins have access      
-\> Endpoint: `/api/pm/{patient}/del/`      
+\> Endpoint: `DELETE /api/pm/{patient}/del/`      
     
 \> Exp. Response:      
 `0 | success`    
@@ -301,7 +301,7 @@ Entries follow an X.Y.Z hierarchy:
 ### 2.3.2 - Patient Assignment     
 \> Description: Assigns a patient to a doctor after confirmation      
 \> Note: Should only be accessible by admins in Rev 3      
-\> Endpoint: `/api/pm/assignPat/confd`      
+\> Endpoint: `POST /api/pm/assignPat/confd`      
 \> Request:      
 ```json    
 {    
@@ -324,7 +324,7 @@ Entries follow an X.Y.Z hierarchy:
     
 ### 3.1.1 - Vitals Fetching      
 \> Description: Fetches all patient data excluding the journal      
-\> Endpoint: `/api/dpm/usrfet/vital`      
+\> Endpoint: `GET /api/dpm/usrfet/vital`      
 \> Request:      
 ```json    
 {    
@@ -351,7 +351,7 @@ Entries follow an X.Y.Z hierarchy:
     
 ### 3.1.2 - Journal Fetching      
 \> Description: Fetches the patient journal      
-\> Endpoint: `/api/dpm/usrfet/journal`      
+\> Endpoint: `GET /api/dpm/usrfet/journal`      
 \> Request:      
 ```json    
 {    
@@ -379,7 +379,7 @@ Entries follow an X.Y.Z hierarchy:
     
 ### 3.1.3 - Prescription Fetching      
 \> Description: Fetches the active prescriptions for a patient      
-\> Endpoint: `/api/dpm/usrfet/prescription`      
+\> Endpoint: `GET /api/dpm/usrfet/prescription`      
 \> Request:      
 ```json    
 {    
@@ -399,7 +399,7 @@ Entries follow an X.Y.Z hierarchy:
     
 ### 3.1.4 - Diagnosis Fetching      
 \> Description: Fetches the diagnoses for a patient      
-\> Endpoint: `/api/dpm/usrfet/diagnosis`      
+\> Endpoint: `GET /api/dpm/usrfet/diagnosis`      
 \> Request:      
 ```json    
 {    
@@ -422,7 +422,7 @@ Entries follow an X.Y.Z hierarchy:
 ```  
 ### 3.1.5 - Appointment Fetching      
 \> Description: Fetches scheduled appointments for a patient      
-\> Endpoint: `/api/dpm/usrfet/appointment`      
+\> Endpoint: `GET /api/dpm/usrfet/appointment`      
 \> Request:      
 ```json    
 {    
@@ -451,7 +451,7 @@ Entries follow an X.Y.Z hierarchy:
     
 ### 3.1.6 - Person Info Fetching      
 \> Description: Fetches personal/demographic information for a patient      
-\> Endpoint: `/api/dpm/usrfet/info`      
+\> Endpoint: `GET /api/dpm/usrfet/info`      
 \> Request:      
 ```json    
 {    
@@ -480,7 +480,7 @@ Entries follow an X.Y.Z hierarchy:
 ```  
 ### 3.1.7 - Lab Result Fetching      
 \> Description: Fetches laboratory results for a patient      
-\> Endpoint: `/api/dpm/usrfet/labresult`      
+\> Endpoint: `GET /api/dpm/usrfet/labresult`      
 \> Request:      
 ```json    
 {    
@@ -518,7 +518,7 @@ Entries follow an X.Y.Z hierarchy:
 ## 3.2 - Updating    
 ### 3.2.1 - Vitals Updating      
 \> Description: Updates vital patient data      
-\> Endpoint: `/api/dpm/usrup/{uuid}/vital`      
+\> Endpoint: `POST /api/dpm/usrup/{uuid}/vital`      
 \> Request:      
 ```json    
 {    
@@ -540,7 +540,7 @@ Entries follow an X.Y.Z hierarchy:
     
 ### 3.2.2 - Journal Updating      
 \> Description: Updates the patient journal      
-\> Endpoint: `/api/dpm/usrup/{uuid}/journal`      
+\> Endpoint: `POST /api/dpm/usrup/{uuid}/journal`      
 \> Request:      
 ```json    
 {    
@@ -563,7 +563,7 @@ Entries follow an X.Y.Z hierarchy:
     
 ### 3.2.3 - Prescription Updating      
 \> Description: Updates the active prescriptions for a patient      
-\> Endpoint: `/api/dpm/usrup/{uuid}/prescription`      
+\> Endpoint: `POST /api/dpm/usrup/{uuid}/prescription`      
 \> Request:      
 ```json    
 {    
@@ -578,7 +578,7 @@ Entries follow an X.Y.Z hierarchy:
     
 ### 3.2.4 - Diagnosis Updating      
 \> Description: Updates the diagnoses for a patient      
-\> Endpoint: `/api/dpm/usrup/{uuid}/diagnosis`      
+\> Endpoint: `POST /api/dpm/usrup/{uuid}/diagnosis`      
 \> Request:      
 ```json    
 {    
@@ -593,7 +593,7 @@ Entries follow an X.Y.Z hierarchy:
     
 ### 3.2.5 - Appointment Updating      
 \> Description: Updates a scheduled appointment for a patient      
-\> Endpoint: `/api/dpm/usrup/{uuid}/appointment`      
+\> Endpoint: `POST /api/dpm/usrup/{uuid}/appointment`      
 \> Request:      
 ```json    
 {     
@@ -615,7 +615,7 @@ Entries follow an X.Y.Z hierarchy:
     
 ### 3.2.6 - Person Info Updating      
 \> Description: Updates personal/demographic information for a patient      
-\> Endpoint: `/api/dpm/usrup/{uuid}/info`      
+\> Endpoint: `POST /api/dpm/usrup/{uuid}/info`      
 \> Request:      
 ```json    
 {    
@@ -636,7 +636,7 @@ Entries follow an X.Y.Z hierarchy:
     
 ### 3.2.7 - Lab Result Updating      
 \> Description: Adds or updates a laboratory result for a patient      
-\> Endpoint: `/api/dpm/usrup/{uuid}/labresult`      
+\> Endpoint: `POST /api/dpm/usrup/{uuid}/labresult`      
 \> Request:      
 ```json    
 {    
@@ -670,7 +670,7 @@ Entries follow an X.Y.Z hierarchy:
 ## 4.1 - Clinic Management      
 ### 4.1.1 - Create Clinic      
 \> Description: Creates a new clinic in the CCR      
-\> Endpoint: `/api/sudo/cc`      
+\> Endpoint: `POST /api/sudo/cc`      
 \> Request:      
 ```json    
 {    
@@ -689,7 +689,7 @@ Entries follow an X.Y.Z hierarchy:
     
 ### 4.1.2 - Fetch Clinic      
 \> Description: Fetches a clinic from the CCR      
-\> Endpoint: `/api/sudo/fc`      
+\> Endpoint: `GET /api/sudo/fc`      
 \> Request:      
 ```json    
 {    
@@ -724,7 +724,7 @@ Entries follow an X.Y.Z hierarchy:
 ### 4.2.1 - Create Local Admin      
 \> Description: Registers a local admin on the system      
 \> Note: Should only be accessible by sysadmins in Rev 3      
-\> Endpoint: `/api/sudo/lam/create`      
+\> Endpoint: `DELETE /api/sudo/lam/create`      
 \> Request body:      
 ```json    
 {    
@@ -747,7 +747,7 @@ Entries follow an X.Y.Z hierarchy:
 ### 4.2.2 - Delete Local Admin      
 \> Description: Deletes a local admin      
 \> Note: Ensure only sysadmins have access      
-\> Endpoint: `/api/sudo/lam/{user}/del/`      
+\> Endpoint: `DELETE /api/sudo/lam/{user}/del/`      
     
 \> Exp. Response:      
 `0 | success`    
@@ -757,7 +757,7 @@ Entries follow an X.Y.Z hierarchy:
 ### 4.2.3 - Fetch Local Admin      
 \> Description: Fetches a local admin from the system      
 \> Note: Should only be accessible by sysadmins in Rev 3      
-\> Endpoint: `/api/sudo/lam/fetch`      
+\> Endpoint: `GET /api/sudo/lam/fetch`      
 \> Request body:      
 ```json    
 {    
