@@ -1,6 +1,6 @@
-\> MediDB Specsheet revision 2   
+\> MediDB Specsheet revision 2.1   
 \> by @voxvoltera & @lilleole      
-\> latest update: 19/03/2026      
+\> latest update: 24/03/2026      
     
 # Revision notes      
 This  revision is meant for the implementation  of the application, and NOT the securing of it. It's deliberately designed with certain security flaws, and certain  restraints and checks  missing  
@@ -664,7 +664,7 @@ Entries follow an X.Y.Z hierarchy:
 
 ## 3.3 - Patient overview
 \> Description: Fetches all patients for a given doctor
-\> Endpoint: `/api/dpm/pf/{doctor_uuid}`
+\> Endpoint: `GET /api/dpm/pf/{doctor_uuid}`
 \> Exp.Response:
 ```json
 {
@@ -693,7 +693,7 @@ Entries follow an X.Y.Z hierarchy:
 ## 3.4 - Calendar
 ### 3.4.1 - Calendar fetching
 \> Description: Fetches all apointments for given doctor
-\> Endpoint: `/api/dpm/calendar/sync/{uuid}` //dr
+\> Endpoint: `GET /api/dpm/calendar/sync/{uuid}` //dr
 \> Exp. Response:
 ```json
 {
@@ -720,7 +720,7 @@ Entries follow an X.Y.Z hierarchy:
 ```
 ### 3.4.2 - Appointment creation
 \> Description: Creates a new appointment
-\> Endpoint: `/api/dpm/calendar/create/{uuid}` //pt
+\> Endpoint: `POST /api/dpm/calendar/create/{uuid}` //pt
 \> Request:
 ```json
 {
@@ -736,7 +736,7 @@ Entries follow an X.Y.Z hierarchy:
 ## 3.5 - permission management
 ### 3.5.1 - Permission updating
 \> Description: Permissions for foreign doctors
-\> Endpoint: `/api/dpm/perm/{uuid}` //pt
+\> Endpoint: `POST /api/dpm/perm/{uuid}` //pt
 \> Request:
 ```json
 {
@@ -760,7 +760,7 @@ Entries follow an X.Y.Z hierarchy:
 
 ### 3.5.2 - Permission fetching
 \> Description: Permissions for foreign doctors
-\> Endpoint: `/api/dpm/perm/{uuid}` //pt
+\> Endpoint: `GET /api/dpm/perm/{uuid}` //pt
 \> Exp. Response:
 ```json
 {
@@ -828,7 +828,7 @@ Entries follow an X.Y.Z hierarchy:
     
 ### 4.1.3 - Delete Clinic      
 \> Description: Deletes a clinic from the CCR      
-\> Endpoint: `/api/sudo/dc/{uuid}`      
+\> Endpoint: `DELETE /api/sudo/dc/{uuid}`      
     
 \> Exp. Response:      
 `0 | success`    
