@@ -250,7 +250,6 @@ Entries follow an X.Y.Z hierarchy:
   
 # 2.y.z - Patient Management      
 \> Note: All admins referred to in section 2 are clinic admins.    
-    
 ## 2.1 - Patient Registration      
 \> Description: Registers a patient in the system      
 \> Note: Should only be accessible by admins in Rev 3      
@@ -319,9 +318,7 @@ Entries follow an X.Y.Z hierarchy:
 \newpage  
 ```  
 # 3.y.z - Doctor–Patient Interface    
-    
-## 3.1 - Fetching    
-    
+## 3.1 - Fetching      
 ### 3.1.1 - Vitals Fetching      
 \> Description: Fetches all patient data excluding the journal      
 \> Endpoint: `/api/dpm/usrfet/vital`      
@@ -664,9 +661,127 @@ Entries follow an X.Y.Z hierarchy:
 ```{=latex}  
 \newpage  
 ```  
+
+## 3.3 - Patient overview
+\> Description: Fetches all patients for a given doctor
+\> Endpoint: `/api/dpm/pf/{doctor_uuid}`
+\> Exp.Response:
+```json
+{
+    "pat1" : {
+        "name" : "string",
+        "pronouns" : "string",
+        "age" : "int",
+        "pfp" : "string" //path to pfp
+    },
+    "pat2" : {
+        "name" : "string",
+        "pronouns" : "string",
+        "age" : "int",
+        "pfp" : "string" //path to pfp
+    },
+    {...},
+    "patn" : {
+        "name" : "string",
+        "pronouns" : "string",
+        "age" : "int",
+        "pfp" : "string" //path to pfp
+    }
+}
+```
+
+## 3.4 - Calendar
+### 3.4.1 - Calendar fetching
+\> Description: Fetches all apointments for given doctor
+\> Endpoint: `/api/dpm/calendar/sync/{uuid}` //dr
+\> Exp. Response:
+```json
+{
+    "apt1" : {
+        "name" : "string",
+        "reason" : "string",
+        "time" : "int", //unix time
+        "pfp" : "string" //path to pfp
+    },
+    "apt2" : {
+        "name" : "string",
+        "reason" : "string",
+        "time" : "int", //unix time
+        "pfp" : "string" //path to pfp
+    },
+    {...},
+    "aptn" : {
+        "name" : "string",
+        "reason" : "string",
+        "time" : "int", //unix time
+        "pfp" : "string" //path to pfp
+    },
+}
+```
+### 3.4.2 - Appointment creation
+\> Description: Creates a new appointment
+\> Endpoint: `/api/dpm/calendar/create/{uuid}` //pt
+\> Request:
+```json
+{
+    "pt. name" : "string",
+    "reason for apt." : "string",
+    "time" : "int",
+    "pfp" : "string"
+}
+```
+\> Exp. Response:
+0 | Success
+
+## 3.5 - permission management
+### 3.5.1 - Permission updating
+\> Description: Permissions for foreign doctors
+\> Endpoint: `/api/dpm/perm/{uuid}` //pt
+\> Request:
+```json
+{
+    "dr.1" : {
+        "dr. uuid" : "int",
+        "perm int" : "int" //each bit in the integer will be treated as a bool
+    },
+    "dr.2" : {
+        "dr. uuid" : "int",
+        "perm int" : "int" //each bit in the integer will be treated as a bool
+    },
+    {...},
+    "dr.n" : {
+        "dr. uuid" : "int",
+        "perm int" : "int" //each bit in the integer will be treated as a bool
+    },
+}
+```
+\> Exp. Response:
+0 | Success
+
+### 3.5.2 - Permission fetching
+\> Description: Permissions for foreign doctors
+\> Endpoint: `/api/dpm/perm/{uuid}` //pt
+\> Exp. Response:
+```json
+{
+    "dr.1" : {
+        "dr. uuid" : "int",
+        "perm int" : "int" //each bit in the integer will be treated as a bool
+    },
+    "dr.2" : {
+        "dr. uuid" : "int",
+        "perm int" : "int" //each bit in the integer will be treated as a bool
+    },
+    {...},
+    "dr.n" : {
+        "dr. uuid" : "int",
+        "perm int" : "int" //each bit in the integer will be treated as a bool
+    },
+}
+```
+
 # 4.y.z - Sysadmin      
-\> Note: For security reasons, sysadmins should only be creatable via CLI.    
-    
+\> Note: For security reasons, sysadmins should only be creatable via CLI.      
 ## 4.1 - Clinic Management      
 ### 4.1.1 - Create Clinic      
 \> Description: Creates a new clinic in the CCR      
