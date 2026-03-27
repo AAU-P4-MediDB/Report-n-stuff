@@ -220,8 +220,7 @@ Entries follow an X.Y.Z hierarchy:
     "name": "string",    
     "clinic": "string",    
     "email": "string",    
-    "position": "string",    
-    "admin": "bool",    
+    "position": "string",        
     "pfp": "image",  
     "phone" : "int"   
 }    
@@ -616,7 +615,7 @@ Entries follow an X.Y.Z hierarchy:
 \> Request:      
 ```json    
 {    
-    "cpr": "int",    
+    "cpr_key": "int",    
     "name": "string",    
     "pronouns": "string",    
     "b-day": "date",    
