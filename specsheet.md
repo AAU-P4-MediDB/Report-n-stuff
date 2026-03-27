@@ -259,9 +259,9 @@ Entries follow an X.Y.Z hierarchy:
     "name": "string",    
     "pronouns": "string",    
     "clinic": "uuid", //ref to CCR    
-    "b-day": "date",    
+    "bday": "date",    
     "weight": "float",    
-    "bio-sex": "bool",    
+    "bio_sex": "bool",    
     "CPR": "int",    
     "diagnoses": "[string]",    
     "vitals" : "json",  
@@ -461,8 +461,8 @@ Entries follow an X.Y.Z hierarchy:
     "uuid": "int",    
     "name": "string",    
     "pronouns": "string",    
-    "b-day": "date",    
-    "bio-sex": "bool",    
+    "bday": "date",    
+    "bio_sex": "bool",    
     "clinic": "string",    
     "pfp": "image"    
 }    
@@ -618,8 +618,8 @@ Entries follow an X.Y.Z hierarchy:
     "cpr_key": "int",    
     "name": "string",    
     "pronouns": "string",    
-    "b-day": "date",    
-    "bio-sex": "bool",    
+    "bday": "date",    
+    "bio_sex": "bool",    
     "pfp": "image"    
 }    
 ```    
