@@ -1,11 +1,19 @@
+> MediDB Specsheet revision 2.5  
+> by @voxvoltera & @lilleole      
+> latest update: 24/03/2026      
 \> MediDB Specsheet revision 2.1   
 \> by @voxvoltera & @lilleole      
 \> latest update: 24/03/2026      
     
+"""
+```{=latex}
+\newpage
+```
+"""
+
 # Revision notes      
-This  revision is meant for the implementation  of the application, and NOT the securing of it. It's deliberately designed with certain security flaws, and certain  restraints and checks  missing  
-An updated version will be made for cyber security implementation, rev3  
-    
+Added a few missing endpoints, and corrected some minor spelling mistakes
+
 # Purpose      
 The purpose of this document is to be the singular source of truth for both frontend and backend development.      
 It aims to prevent either team from blocking one another, or having to wait for a certain feature to be implemented before they can start their work.      
@@ -14,11 +22,10 @@ Any deviation from this document should only happen after consulting with any of
 # Usage      
 This specsheet is to be viewed as a reference manual rather than a todo list.      
 Implementation order is dictated by the Kanban board, and the order in which tickets are listed. Each Kanban ticket will map to a specific entry in this specsheet (e.g. [2.3.7]) to ensure the implementation matches the design, and is carried out in the correct order in accordance to testing efforts.    
-```{=latex}  
-\newpage  
-```  
+
 # Database      
 ## CCR (Central Clinic Register)    
+
 ```{=latex}  
 \begin{tiny}  
 ```  
@@ -133,15 +140,15 @@ Implementation order is dictated by the Kanban board, and the order in which tic
 ```  
 ```{=latex}  
 \end{tiny}  
-```  
+```
   
 ## Structure      
 Entries follow an X.Y.Z hierarchy:      
-\> X: Overall Category (e.g., User Management, Patient Management).      
-\> Y: Feature Set (e.g., Login, Settings, Search).      
-\> Z: Specific Action/Endpoint (e.g., Password Reset, Entry Change).      
+> X: Overall Category (e.g., User Management, Patient Management).      
+> Y: Feature Set (e.g., Login, Settings, Search).      
+> Z: Specific Action/Endpoint (e.g., Password Reset, Entry Change).      
     
-\> Note: "position" field is  an integer mapping to an enum on  the database end. the  following applies:  
+> Note: "position" field is  an integer mapping to an enum on  the database end. the  following applies:  
     1: Secretary  
     2: Nurse  
     3: Doctor  
@@ -153,11 +160,11 @@ Entries follow an X.Y.Z hierarchy:
 # 1.y.z - User Management      
 ## 1.1 - Access Control      
 ### 1.1.1 - User Registration      
-\> Description: Registers a user on the system (not a patient)      
-\> Note: Should only be accessible by admins in Rev 3      
-\> Note: Implement RESTful in Rev 3      
-\> Endpoint: `POST /api/um/ac/register`      
-\> Request body:      
+> Description: Registers a user on the system (not a patient)      
+> Note: Should only be accessible by admins in Rev 3      
+> Note: Implement RESTful in Rev 3      
+> Endpoint: `POST /api/um/ac/register`      
+> Request body:      
 ```json    
 {    
     "email": "string",    
@@ -169,51 +176,51 @@ Entries follow an X.Y.Z hierarchy:
     "phone" : "int"   
 }    
 ```    
-\> Note: `password` should be hashed in Rev 3. `pfp` is optional.    
+> Note: `password` should be hashed in Rev 3. `pfp` is optional.    
     
-\> Exp. Response:      
+> Exp. Response:      
 `0 | success`    
     
 ---    
     
 ### 1.1.2 - User Login      
-\> Description: Logs in a user      
-\> Endpoint: `POST /api/um/ac/login`      
-\> Request body:      
+> Description: Logs in a user      
+> Endpoint: `POST /api/um/ac/login`      
+> Request body:      
 ```json    
 {    
     "email": "string",    
     "password": "string"    
 }    
 ```    
-\> Note: `password` should be hashed in Rev 3. Session tokens to be introduced in Rev 3.    
+> Note: `password` should be hashed in Rev 3. Session tokens to be introduced in Rev 3.    
     
-\> Exp. Response:      
+> Exp. Response:      
 `0 | success`    
     
 ---    
     
 ## 1.2 - User Deletion      
-\> Description: Deletes a user      
-\> Note: Ensure only admins have access      
-\> Endpoint: `DELETE /api/um/{user}/del/`      
+> Description: Deletes a user      
+> Note: Ensure only admins have access      
+> Endpoint: `DELETE /api/um/{user}/del/`      
     
-\> Exp. Response:      
+> Exp. Response:      
 `0 | success`    
     
 ---    
     
 ## 1.3 - User Fetching      
-\> Description: Fetches data on a specified user      
-\> Endpoint: `GET /api/um/fetch`      
-\> Request body:      
+> Description: Fetches data on a specified user      
+> Endpoint: `GET /api/um/fetch`      
+> Request body:      
 ```json    
 {    
     "email": "string"    
 }    
 ```    
     
-\> Exp. Response:      
+> Exp. Response:      
 ```json    
 {    
     "uuid": "int",    
@@ -225,35 +232,35 @@ Entries follow an X.Y.Z hierarchy:
     "phone" : "int"   
 }    
 ```    
-\> Note: `pfp` is optional.    
+> Note: `pfp` is optional.    
     
 ---    
     
 ## 1.4 - User Password Reset      
-\> Description: Resets a user's password      
-\> Note: Should only be accessible by admins in Rev 3      
-\> Endpoint: `POST /api/um/{user}/reset`      
-\> Request body:      
+> Description: Resets a user's password      
+> Note: Should only be accessible by admins in Rev 3      
+> Endpoint: `POST /api/um/{user}/reset`      
+> Request body:      
 ```json    
 {    
     "email": "string",    
     "new_pass": "string"    
 }    
 ```    
-\> Note: `new_pass` should be hashed in Rev 3.    
+> Note: `new_pass` should be hashed in Rev 3.    
     
-\> Exp. Response:      
+> Exp. Response:      
 `0 | success`    
     
 ---    
   
 # 2.y.z - Patient Management      
-\> Note: All admins referred to in section 2 are clinic admins.    
+> Note: All admins referred to in section 2 are clinic admins.    
 ## 2.1 - Patient Registration      
-\> Description: Registers a patient in the system      
-\> Note: Should only be accessible by admins in Rev 3      
-\> Endpoint: `POST /api/pm/reg`      
-\> Request body:      
+> Description: Registers a patient in the system      
+> Note: Should only be accessible by admins in Rev 3      
+> Endpoint: `POST /api/pm/reg`      
+> Request body:      
 ```json    
 {    
     "name": "string",    
@@ -269,66 +276,60 @@ Entries follow an X.Y.Z hierarchy:
     "pfp": "image"    
 }    
 ```    
-\> Note: `pfp` is optional.    
+> Note: `pfp` is optional.    
     
-\> Exp. Response:      
+> Exp. Response:      
 `0 | success`    
     
 ---    
     
 ## 2.2 - Patient Deletion      
-\> Description: Deletes a patient      
-\> Note: Ensure only admins have access      
-\> Endpoint: `DELETE /api/pm/{patient}/del/`      
+> Description: Deletes a patient      
+> Note: Ensure only admins have access      
+> Endpoint: `DELETE /api/pm/{patient}/del/`      
     
-\> Exp. Response:      
+> Exp. Response:      
 `0 | success`    
     
 ---    
     
-```{=latex}  
-\newpage  
-```   
 ## 2.3 - Assign Patient      
 ### 2.3.1 - Patient Assignment info fetching      
-\> Description: Fetches information regarding patient and doctor(s) for (re)assignment      
-\> Note: Use endpoint 1.3 and 3.1.6     
+> Description: Fetches information regarding patient and doctor(s) for (re)assignment      
+> Note: Use endpoint 1.3 and 3.1.6     
     
 ---    
     
 ### 2.3.2 - Patient Assignment     
-\> Description: Assigns a patient to a doctor after confirmation      
-\> Note: Should only be accessible by admins in Rev 3      
-\> Endpoint: `POST /api/pm/assignPat/confd`      
-\> Request:      
+> Description: Assigns a patient to a doctor after confirmation      
+> Note: Should only be accessible by admins in Rev 3      
+> Endpoint: `POST /api/pm/assignPat/confd`      
+> Request:      
 ```json    
 {    
-    "uuid_pt": "int",    
-    "uuid_dr": "int"    
+    "uuid_pt": "uuid",    
+    "uuid_dr": "uuid"    
 }    
 ```    
     
-\> Exp. Response:      
+> Exp. Response:      
 `0 | success`    
     
 ---   
   
-```{=latex}  
-\newpage  
-```  
 # 3.y.z - Doctor–Patient Interface    
 ## 3.1 - Fetching      
 ### 3.1.1 - Vitals Fetching      
-\> Description: Fetches all patient data excluding the journal      
-\> Endpoint: `GET /api/dpm/usrfet/vital`      
-\> Request:      
+> Description: Fetches all patient data excluding the journal      
+> Endpoint: `GET /api/dpm/usrfet/vital`      
+> Request:      
 ```json    
 {    
     "CPR_pt": "int"    
 }    
 ```    
     
-\> Exp. Response:      
+> Exp. Response:      
 ```json    
 {    
     "uuid": "int",     
@@ -341,21 +342,21 @@ Entries follow an X.Y.Z hierarchy:
     }    
 }    
 ```    
-\> Note: `pfp` is optional. Update when more data fields are confirmed.    
+> Note: `pfp` is optional. Update when more data fields are confirmed.    
     
 ---    
     
 ### 3.1.2 - Journal Fetching      
-\> Description: Fetches the patient journal      
-\> Endpoint: `GET /api/dpm/usrfet/journal`      
-\> Request:      
+> Description: Fetches the patient journal      
+> Endpoint: `GET /api/dpm/usrfet/journal`      
+> Request:      
 ```json    
 {    
     "CPR_pt": "int"    
 }    
 ```    
     
-\> Exp. Response:      
+> Exp. Response:      
 ```json    
 {    
     "uuid": "int",     
@@ -374,16 +375,16 @@ Entries follow an X.Y.Z hierarchy:
 ---    
     
 ### 3.1.3 - Prescription Fetching      
-\> Description: Fetches the active prescriptions for a patient      
-\> Endpoint: `GET /api/dpm/usrfet/prescription`      
-\> Request:      
+> Description: Fetches the active prescriptions for a patient      
+> Endpoint: `GET /api/dpm/usrfet/prescription`      
+> Request:      
 ```json    
 {    
     "CPR_pt": "int"    
 }    
 ```    
     
-\> Exp. Response:      
+> Exp. Response:      
 ```json    
 {    
     "uuid": "int",    
@@ -394,16 +395,16 @@ Entries follow an X.Y.Z hierarchy:
 ---    
     
 ### 3.1.4 - Diagnosis Fetching      
-\> Description: Fetches the diagnoses for a patient      
-\> Endpoint: `GET /api/dpm/usrfet/diagnosis`      
-\> Request:      
+> Description: Fetches the diagnoses for a patient      
+> Endpoint: `GET /api/dpm/usrfet/diagnosis`      
+> Request:      
 ```json    
 {    
     "CPR_pt": "int"    
 }    
 ```    
     
-\> Exp. Response:      
+> Exp. Response:      
 ```json    
 {    
     "uuid": "int",    
@@ -413,20 +414,17 @@ Entries follow an X.Y.Z hierarchy:
     
 ---    
   
-```{=latex}  
-\newpage  
-```  
 ### 3.1.5 - Appointment Fetching      
-\> Description: Fetches scheduled appointments for a patient      
-\> Endpoint: `GET /api/dpm/usrfet/appointment`      
-\> Request:      
+> Description: Fetches scheduled appointments for a patient      
+> Endpoint: `GET /api/dpm/usrfet/appointment`      
+> Request:      
 ```json    
 {    
     "CPR_pt": "int"    
 }    
 ```    
     
-\> Exp. Response:      
+> Exp. Response:      
 ```json    
 {    
     "uuid": "int",     
@@ -446,16 +444,16 @@ Entries follow an X.Y.Z hierarchy:
 ---    
     
 ### 3.1.6 - Person Info Fetching      
-\> Description: Fetches personal/demographic information for a patient      
-\> Endpoint: `GET /api/dpm/usrfet/info`      
-\> Request:      
+> Description: Fetches personal/demographic information for a patient      
+> Endpoint: `GET /api/dpm/usrfet/info`      
+> Request:      
 ```json    
 {    
     "CPR_pt": "int"    
 }    
 ```    
     
-\> Exp. Response:      
+> Exp. Response:      
 ```json    
 {    
     "uuid": "int",    
@@ -467,24 +465,21 @@ Entries follow an X.Y.Z hierarchy:
     "pfp": "image"    
 }    
 ```    
-\> Note: `pfp` is optional.    
+> Note: `pfp` is optional.    
     
 ---    
   
-```{=latex}  
-\newpage  
-```  
 ### 3.1.7 - Lab Result Fetching      
-\> Description: Fetches laboratory results for a patient      
-\> Endpoint: `GET /api/dpm/usrfet/labresult`      
-\> Request:      
+> Description: Fetches laboratory results for a patient      
+> Endpoint: `GET /api/dpm/usrfet/labresult`      
+> Request:      
 ```json    
 {    
     "CPR_pt": "int"    
 }    
 ```    
     
-\> Exp. Response:      
+> Exp. Response:      
 ```json    
 {    
     "uuid": "int",     
@@ -508,14 +503,11 @@ Entries follow an X.Y.Z hierarchy:
     
 ---    
   
-```{=latex}  
-\newpage  
-```  
 ## 3.2 - Updating    
 ### 3.2.1 - Vitals Updating      
-\> Description: Updates vital patient data      
-\> Endpoint: `POST /api/dpm/usrup/{uuid}/vital`      
-\> Request:      
+> Description: Updates vital patient data      
+> Endpoint: `POST /api/dpm/usrup/{uuid}/vital`      
+> Request:      
 ```json    
 {    
     "vitals": {    
@@ -527,17 +519,17 @@ Entries follow an X.Y.Z hierarchy:
     }    
 }    
 ```    
-\> Note: `pfp` is optional. Update when more data fields are confirmed.    
+> Note: `pfp` is optional. Update when more data fields are confirmed.    
     
-\> Exp. Response:      
+> Exp. Response:      
 `0 | success`    
     
 ---    
     
 ### 3.2.2 - Journal Updating      
-\> Description: Updates the patient journal      
-\> Endpoint: `POST /api/dpm/usrup/{uuid}/journal`      
-\> Request:      
+> Description: Updates the patient journal      
+> Endpoint: `POST /api/dpm/usrup/{uuid}/journal`      
+> Request:      
 ```json    
 {    
     "journal": {    
@@ -552,45 +544,45 @@ Entries follow an X.Y.Z hierarchy:
 }    
 ```    
     
-\> Exp. Response:      
+> Exp. Response:      
 `0 | success`    
     
 ---    
     
 ### 3.2.3 - Prescription Updating      
-\> Description: Updates the active prescriptions for a patient      
-\> Endpoint: `POST /api/dpm/usrup/{uuid}/prescription`      
-\> Request:      
+> Description: Updates the active prescriptions for a patient      
+> Endpoint: `POST /api/dpm/usrup/{uuid}/prescription`      
+> Request:      
 ```json    
 {    
     "prescriptions": "json"    
 }    
 ```    
     
-\> Exp. Response:      
+> Exp. Response:      
 `0 | success`    
     
 ---    
     
 ### 3.2.4 - Diagnosis Updating      
-\> Description: Updates the diagnoses for a patient      
-\> Endpoint: `POST /api/dpm/usrup/{uuid}/diagnosis`      
-\> Request:      
+> Description: Updates the diagnoses for a patient      
+> Endpoint: `POST /api/dpm/usrup/{uuid}/diagnosis`      
+> Request:      
 ```json    
 {    
     "diagnoses": "[string]"    
 }    
 ```    
     
-\> Exp. Response:      
+> Exp. Response:      
 `0 | success`    
     
 ---    
     
 ### 3.2.5 - Appointment Updating      
-\> Description: Updates a scheduled appointment for a patient      
-\> Endpoint: `POST /api/dpm/usrup/{uuid}/appointment`      
-\> Request:      
+> Description: Updates a scheduled appointment for a patient      
+> Endpoint: `POST /api/dpm/usrup/{uuid}/appointment`      
+> Request:      
 ```json    
 {     
     "appointment": {    
@@ -604,15 +596,15 @@ Entries follow an X.Y.Z hierarchy:
 }    
 ```    
     
-\> Exp. Response:      
+> Exp. Response:      
 `0 | success`    
     
 ---    
     
 ### 3.2.6 - Person Info Updating      
-\> Description: Updates personal/demographic information for a patient      
-\> Endpoint: `POST /api/dpm/usrup/{uuid}/info`      
-\> Request:      
+> Description: Updates personal/demographic information for a patient      
+> Endpoint: `POST /api/dpm/usrup/{uuid}/info`      
+> Request:      
 ```json    
 {    
     "cpr_key": "int",    
@@ -623,17 +615,17 @@ Entries follow an X.Y.Z hierarchy:
     "pfp": "image"    
 }    
 ```    
-\> Note: `pfp` is optional.    
+> Note: `pfp` is optional.    
     
-\> Exp. Response:      
+> Exp. Response:      
 `0 | success`    
     
 ---    
     
 ### 3.2.7 - Lab Result Updating      
-\> Description: Adds or updates a laboratory result for a patient      
-\> Endpoint: `POST /api/dpm/usrup/{uuid}/labresult`      
-\> Request:      
+> Description: Adds or updates a laboratory result for a patient      
+> Endpoint: `POST /api/dpm/usrup/{uuid}/labresult`      
+> Request:      
 ```json    
 {    
     "lab_result": {    
@@ -652,14 +644,10 @@ Entries follow an X.Y.Z hierarchy:
 }    
 ```    
     
-\> Exp. Response:      
+> Exp. Response:      
 `0 | success`    
     
 ---    
-  
-```{=latex}  
-\newpage  
-```  
 
 ## 3.3 - Patient overview
 \> Description: Fetches all patients for a given doctor
@@ -729,7 +717,7 @@ Entries follow an X.Y.Z hierarchy:
     "pfp" : "string"
 }
 ```
-\> Exp. Response:
+> Exp. Response:
 0 | Success
 
 ## 3.5 - permission management
@@ -754,7 +742,7 @@ Entries follow an X.Y.Z hierarchy:
     },
 }
 ```
-\> Exp. Response:
+> Exp. Response:
 0 | Success
 
 ### 3.5.2 - Permission fetching
@@ -780,12 +768,12 @@ Entries follow an X.Y.Z hierarchy:
 ```
 
 # 4.y.z - Sysadmin      
-\> Note: For security reasons, sysadmins should only be creatable via CLI.      
+> Note: For security reasons, sysadmins should only be creatable via CLI.      
 ## 4.1 - Clinic Management      
 ### 4.1.1 - Create Clinic      
-\> Description: Creates a new clinic in the CCR      
-\> Endpoint: `POST /api/sudo/cc`      
-\> Request:      
+> Description: Creates a new clinic in the CCR      
+> Endpoint: `POST /api/sudo/cc`      
+> Request:      
 ```json    
 {    
     "name": "string",    
@@ -796,22 +784,22 @@ Entries follow an X.Y.Z hierarchy:
 }    
 ```    
     
-\> Exp. Response:      
+> Exp. Response:      
 `0 | success`    
     
 ---    
     
 ### 4.1.2 - Fetch Clinic      
-\> Description: Fetches a clinic from the CCR      
-\> Endpoint: `GET /api/sudo/fc`      
-\> Request:      
+> Description: Fetches a clinic from the CCR      
+> Endpoint: `GET /api/sudo/fc`      
+> Request:      
 ```json    
 {    
     "email": "string"    
 }    
 ```    
     
-\> Exp. Response:      
+> Exp. Response:      
 ```json    
 {    
     "name": "string",    
@@ -829,17 +817,17 @@ Entries follow an X.Y.Z hierarchy:
 \> Description: Deletes a clinic from the CCR      
 \> Endpoint: `DELETE /api/sudo/dc/{uuid}`      
     
-\> Exp. Response:      
+> Exp. Response:      
 `0 | success`    
     
 ---    
     
 ## 4.2 - Local Admin Management      
 ### 4.2.1 - Create Local Admin      
-\> Description: Registers a local admin on the system      
-\> Note: Should only be accessible by sysadmins in Rev 3      
-\> Endpoint: `DELETE /api/sudo/lam/create`      
-\> Request body:      
+> Description: Registers a local admin on the system      
+> Note: Should only be accessible by sysadmins in Rev 3      
+> Endpoint: `POST /api/sudo/lam/create`      
+> Request body:      
 ```json    
 {    
     "email": "string",    
@@ -851,35 +839,35 @@ Entries follow an X.Y.Z hierarchy:
     "position" : "int" //always 4, see top comment    
 }    
 ```    
-\> Note: `password` should be hashed in Rev 3. `pfp` is optional.    
+> Note: `password` should be hashed in Rev 3. `pfp` is optional.    
     
-\> Exp. Response:      
+> Exp. Response:      
 `0 | success`    
     
 ---    
     
 ### 4.2.2 - Delete Local Admin      
-\> Description: Deletes a local admin      
-\> Note: Ensure only sysadmins have access      
-\> Endpoint: `DELETE /api/sudo/lam/{user}/del/`      
+> Description: Deletes a local admin      
+> Note: Ensure only sysadmins have access      
+> Endpoint: `DELETE /api/sudo/lam/{user}/del/`      
     
-\> Exp. Response:      
+> Exp. Response:      
 `0 | success`    
     
 ---    
     
 ### 4.2.3 - Fetch Local Admin      
-\> Description: Fetches a local admin from the system      
-\> Note: Should only be accessible by sysadmins in Rev 3      
-\> Endpoint: `GET /api/sudo/lam/fetch`      
-\> Request body:      
+> Description: Fetches a local admin from the system      
+> Note: Should only be accessible by sysadmins in Rev 3      
+> Endpoint: `GET /api/sudo/lam/fetch`      
+> Request body:      
 ```json    
 {    
     "email": "string"    
 }    
 ```    
     
-\> Exp. Response:      
+> Exp. Response:      
 ```json    
 {    
     "uuid": "int",    
@@ -890,16 +878,16 @@ Entries follow an X.Y.Z hierarchy:
     "phone" : "int"  
 }    
 ```    
-\> Note: `pfp` is optional.    
+> Note: `pfp` is optional.    
     
 ---    
     
 # Error Codes      
 Errors are categorised as X.YY, where X is the category and YY is the error number.    
     
-\> 0 — Success    
+> 0 — Success    
     
-\> 1.YY — Application / system error    
+> 1.YY — Application / system error    
     
     1.01 — Communication with backend lost    
     1.02 — Backend error    
@@ -918,7 +906,7 @@ Errors are categorised as X.YY, where X is the category and YY is the error numb
     1.15 — Unsupported file type    
     
     
-\> 2.YY — User / validation error    
+> 2.YY — User / validation error    
     
     2.01 — Invalid credentials    
     2.02 — User already registered    
@@ -933,11 +921,7 @@ Errors are categorised as X.YY, where X is the category and YY is the error numb
     2.11 — Patient already assigned to doctor    
     2.12 — Doctor does not belong to specified clinic    
   
-```{=latex}  
-\newpage  
-```  
-    
-\> 3.YY — Connection / infrastructure error    
+> 3.YY — Connection / infrastructure error    
     
     3.01 — Request timeout    
     3.02 — L** node unreachable    
@@ -946,7 +930,7 @@ Errors are categorised as X.YY, where X is the category and YY is the error numb
     3.05 — DNS resolution failure    
     
     
-\> 4.YY — Security / authorisation error    
+> 4.YY — Security / authorisation error    
     
     4.01 — Unauthorised (no credentials provided)    
     4.02 — Forbidden (insufficient permissions)    
@@ -958,9 +942,9 @@ Errors are categorised as X.YY, where X is the category and YY is the error numb
     4.08 — Cross-clinic access violation    
     
     
-\> 7.YY — Miscellaneous error    
+> 7.YY — Miscellaneous error    
     
     7.01 — UUID already exists    
     7.02 — Generic registration error    
     7.03 — Unknown error    
-    7.04 — Not implemented    
+    7.04 — Not implemented
