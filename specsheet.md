@@ -1,9 +1,6 @@
-> MediDB Specsheet revision 2.5  
+> MediDB Specsheet revision 2.6  
 > by @voxvoltera & @lilleole      
-> latest update: 24/03/2026      
-\> MediDB Specsheet revision 2.1   
-\> by @voxvoltera & @lilleole      
-\> latest update: 24/03/2026      
+> latest update: 1/04/2026         
     
 """
 ```{=latex}
@@ -149,11 +146,11 @@ Entries follow an X.Y.Z hierarchy:
 > Z: Specific Action/Endpoint (e.g., Password Reset, Entry Change).      
     
 > Note: "position" field is  an integer mapping to an enum on  the database end. the  following applies:  
-    1: Secretary  
-    2: Nurse  
-    3: Doctor  
-    4: Clinic (Local) Admin  
-    5: Sys Admin  
+    0: Secretary  
+    1: Nurse  
+    2: Doctor  
+    3: Clinic (Local) Admin  
+    4: Sys Admin  
     
 ---    
     
