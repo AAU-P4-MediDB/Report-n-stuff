@@ -1,9 +1,6 @@
-> MediDB Specsheet revision 2.5  
-> by @voxvoltera & @lilleole      
-> latest update: 24/03/2026      
-\> MediDB Specsheet revision 2.1   
+\> MediDB Specsheet revision 2.6
 \> by @voxvoltera & @lilleole      
-\> latest update: 24/03/2026      
+\> latest update: 01/04/2026      
     
 """
 ```{=latex}
@@ -12,7 +9,7 @@
 """
 
 # Revision notes      
-Added a few missing endpoints, and corrected some minor spelling mistakes
+Replaced all get with post 
 
 # Purpose      
 The purpose of this document is to be the singular source of truth for both frontend and backend development.      
@@ -212,7 +209,7 @@ Entries follow an X.Y.Z hierarchy:
     
 ## 1.3 - User Fetching      
 > Description: Fetches data on a specified user      
-> Endpoint: `GET /api/um/fetch`      
+> Endpoint: `POST /api/um/fetch`      
 > Request body:      
 ```json    
 {    
@@ -321,7 +318,7 @@ Entries follow an X.Y.Z hierarchy:
 ## 3.1 - Fetching      
 ### 3.1.1 - Vitals Fetching      
 > Description: Fetches all patient data excluding the journal      
-> Endpoint: `GET /api/dpm/usrfet/vital`      
+> Endpoint: `POST /api/dpm/usrfet/vital`      
 > Request:      
 ```json    
 {    
@@ -348,7 +345,7 @@ Entries follow an X.Y.Z hierarchy:
     
 ### 3.1.2 - Journal Fetching      
 > Description: Fetches the patient journal      
-> Endpoint: `GET /api/dpm/usrfet/journal`      
+> Endpoint: `POST /api/dpm/usrfet/journal`      
 > Request:      
 ```json    
 {    
@@ -376,7 +373,7 @@ Entries follow an X.Y.Z hierarchy:
     
 ### 3.1.3 - Prescription Fetching      
 > Description: Fetches the active prescriptions for a patient      
-> Endpoint: `GET /api/dpm/usrfet/prescription`      
+> Endpoint: `POST /api/dpm/usrfet/prescription`      
 > Request:      
 ```json    
 {    
@@ -396,7 +393,7 @@ Entries follow an X.Y.Z hierarchy:
     
 ### 3.1.4 - Diagnosis Fetching      
 > Description: Fetches the diagnoses for a patient      
-> Endpoint: `GET /api/dpm/usrfet/diagnosis`      
+> Endpoint: `POST /api/dpm/usrfet/diagnosis`      
 > Request:      
 ```json    
 {    
@@ -416,7 +413,7 @@ Entries follow an X.Y.Z hierarchy:
   
 ### 3.1.5 - Appointment Fetching      
 > Description: Fetches scheduled appointments for a patient      
-> Endpoint: `GET /api/dpm/usrfet/appointment`      
+> Endpoint: `POST /api/dpm/usrfet/appointment`      
 > Request:      
 ```json    
 {    
@@ -445,7 +442,7 @@ Entries follow an X.Y.Z hierarchy:
     
 ### 3.1.6 - Person Info Fetching      
 > Description: Fetches personal/demographic information for a patient      
-> Endpoint: `GET /api/dpm/usrfet/info`      
+> Endpoint: `POST /api/dpm/usrfet/info`      
 > Request:      
 ```json    
 {    
@@ -471,7 +468,7 @@ Entries follow an X.Y.Z hierarchy:
   
 ### 3.1.7 - Lab Result Fetching      
 > Description: Fetches laboratory results for a patient      
-> Endpoint: `GET /api/dpm/usrfet/labresult`      
+> Endpoint: `POST /api/dpm/usrfet/labresult`      
 > Request:      
 ```json    
 {    
@@ -651,7 +648,7 @@ Entries follow an X.Y.Z hierarchy:
 
 ## 3.3 - Patient overview
 \> Description: Fetches all patients for a given doctor
-\> Endpoint: `GET /api/dpm/pf/{doctor_uuid}`
+\> Endpoint: `POST /api/dpm/pf/{doctor_uuid}`
 \> Exp.Response:
 ```json
 {
@@ -680,7 +677,7 @@ Entries follow an X.Y.Z hierarchy:
 ## 3.4 - Calendar
 ### 3.4.1 - Calendar fetching
 \> Description: Fetches all apointments for given doctor
-\> Endpoint: `GET /api/dpm/calendar/sync/{uuid}` //dr
+\> Endpoint: `POST /api/dpm/calendar/sync/{uuid}` //dr
 \> Exp. Response:
 ```json
 {
@@ -747,7 +744,7 @@ Entries follow an X.Y.Z hierarchy:
 
 ### 3.5.2 - Permission fetching
 \> Description: Permissions for foreign doctors
-\> Endpoint: `GET /api/dpm/perm/{uuid}` //pt
+\> Endpoint: `POST /api/dpm/perm/{uuid}` //pt
 \> Exp. Response:
 ```json
 {
@@ -766,6 +763,25 @@ Entries follow an X.Y.Z hierarchy:
     },
 }
 ```
+
+## 3.6 - Doctor timeline
+\> Description: Timeline of da doctor
+\> Endpoint: `POST /api/dpm/{uuid}/timeline` //pt
+\> Exp. Response:
+```json
+{
+    "journal": {    
+        "date": "int",    
+        //below is example data  
+        "patient": "string",    
+        "doctor_accessing": "string",    
+        "data_type": "string",    
+        "changes": "string",
+        "severity" : "int"    
+    }  
+}
+```
+
 
 # 4.y.z - Sysadmin      
 > Note: For security reasons, sysadmins should only be creatable via CLI.      
@@ -791,7 +807,7 @@ Entries follow an X.Y.Z hierarchy:
     
 ### 4.1.2 - Fetch Clinic      
 > Description: Fetches a clinic from the CCR      
-> Endpoint: `GET /api/sudo/fc`      
+> Endpoint: `POST /api/sudo/fc`      
 > Request:      
 ```json    
 {    
@@ -859,7 +875,7 @@ Entries follow an X.Y.Z hierarchy:
 ### 4.2.3 - Fetch Local Admin      
 > Description: Fetches a local admin from the system      
 > Note: Should only be accessible by sysadmins in Rev 3      
-> Endpoint: `GET /api/sudo/lam/fetch`      
+> Endpoint: `POST /api/sudo/lam/fetch`      
 > Request body:      
 ```json    
 {    
