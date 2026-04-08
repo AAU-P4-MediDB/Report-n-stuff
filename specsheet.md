@@ -720,7 +720,7 @@ Entries follow an X.Y.Z hierarchy:
 ## 3.5 - permission management
 ### 3.5.1 - Permission updating
 \> Description: Permissions for foreign doctors
-\> Endpoint: `POST /api/dpm/perm/{uuid}` //pt
+\> Endpoint: `POST /api/dpm/perm/{uuid}/update` //pt
 \> Request:
 ```json
 {
@@ -744,7 +744,7 @@ Entries follow an X.Y.Z hierarchy:
 
 ### 3.5.2 - Permission fetching
 \> Description: Permissions for foreign doctors
-\> Endpoint: `POST /api/dpm/perm/{uuid}` //pt
+\> Endpoint: `POST /api/dpm/perm/{uuid}/get` //pt
 \> Exp. Response:
 ```json
 {
