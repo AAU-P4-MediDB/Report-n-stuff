@@ -703,19 +703,7 @@ Entries follow an X.Y.Z hierarchy:
 }
 ```
 ### 3.4.2 - Appointment creation
-\> Description: Creates a new appointment
-\> Endpoint: `POST /api/dpm/calendar/create/{uuid}` //pt
-\> Request:
-```json
-{
-    "pt. name" : "string",
-    "reason for apt." : "string",
-    "time" : "int",
-    "pfp" : "string"
-}
-```
-> Exp. Response:
-0 | Success
+use endpoint 3.2.5 appointment updating 
 
 ## 3.5 - permission management
 ### 3.5.1 - Permission updating
