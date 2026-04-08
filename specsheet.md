@@ -1,6 +1,6 @@
-\> MediDB Specsheet revision 2.6
+\> MediDB Specsheet revision 2.7
 \> by @voxvoltera & @lilleole      
-\> latest update: 01/04/2026      
+\> latest update: 08/04/2026      
     
 """
 ```{=latex}
@@ -753,8 +753,10 @@ use endpoint 3.2.5 appointment updating
 ```
 
 ## 3.6 - Doctor timeline
+
+### 3.6.1 - Timeline fetching
 \> Description: Timeline of da doctor
-\> Endpoint: `POST /api/dpm/{uuid}/timeline` //pt
+\> Endpoint: `POST /api/dpm/{uuid}/timeline/get` //pt
 \> Exp. Response:
 ```json
 {
@@ -769,6 +771,27 @@ use endpoint 3.2.5 appointment updating
     }  
 }
 ```
+
+### 3.6.1 - Timeline updating
+> Description: Timeline of da doctor
+> Endpoint: `POST /api/dpm/{uuid}/timeline/get` //pt
+> request:
+```json
+{
+    "journal": {    
+        "date": "int",    
+        //below is example data  
+        "patient": "string",    
+        "doctor_accessing": "string",    
+        "data_type": "string",    
+        "changes": "string",
+        "severity" : "int"    
+    }  
+}
+```
+> Exp. Response:
+`0 | success`  
+
 
 
 # 4.y.z - Sysadmin      
