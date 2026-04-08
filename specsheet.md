@@ -774,7 +774,7 @@ use endpoint 3.2.5 appointment updating
 
 ### 3.6.1 - Timeline updating
 > Description: Timeline of da doctor
-> Endpoint: `POST /api/dpm/{uuid}/timeline/get` //pt
+> Endpoint: `POST /api/dpm/{uuid}/timeline/update` //pt
 > request:
 ```json
 {
