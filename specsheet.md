@@ -756,21 +756,10 @@ use endpoint 3.2.5 appointment updating
 \> Endpoint: `POST /api/dpm/perm/{uuid}/get` //pt  
 \> Exp. Response:  
 ```json  
-{  
-    "dr.1" : {  
-        "dr. uuid" : "int",  
-        "perm int" : "int" //each bit in the integer will be treated as a bool  
-    },  
-    "dr.2" : {  
-        "dr. uuid" : "int",  
-        "perm int" : "int" //each bit in the integer will be treated as a bool  
-    },  
-    {...},  
-    "dr.n" : {  
-        "dr. uuid" : "int",  
-        "perm int" : "int" //each bit in the integer will be treated as a bool  
-    },  
-}  
+[  
+    "{dr. uuid 1}" : "int", 
+    "{dr. uuid 2}" : "int"
+] 
 ```
 
 ```{=latex}
