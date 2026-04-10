@@ -1,9 +1,9 @@
-\> MediDB Specsheet revision 2.8  
+\> MediDB Specsheet revision 2.8.1
 \> by @voxvoltera & @lilleole        
 \> latest update: 10/04/2026        
   
 # Revision notes        
-Replaced all get with post   
+Added UUID to endpoint address of 3.5.4 
   
 # Purpose        
 The purpose of this document is to be the singular source of truth for both frontend and backend development.        
@@ -794,7 +794,7 @@ use endpoint 3.2.5 appointment updating
   
 ### 3.5.4 - Permission request fetching  
 \> Description: Permissions for foreign doctors  
-\> Endpoint: `POST /api/dpm/perm/request/get` //pt  
+\> Endpoint: `POST /api/dpm/perm/request/get/${uuid}` //pt  
 \> Exp. Response:  
 ```json  
 {  
