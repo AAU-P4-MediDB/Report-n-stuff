@@ -51,11 +51,11 @@ Implementation order is dictated by the Kanban board, and the order in which tic
 | PHONE       | INT  | NOT NULL. 0-99999999                 | Phone number of user                    | Assumes all danish (+45)                                   |    
 ```    
 ```{=latex}    
-\end{tiny}    
-```    
-```{=latex}
-\newline
+\end{tiny}  
 ```
+```{=latex}
+\newpage
+```    
 ## PR (Patient Register)      
 ```{=latex}    
 \begin{tiny}    
@@ -137,7 +137,9 @@ Implementation order is dictated by the Kanban board, and the order in which tic
 ```{=latex}    
 \end{tiny}    
 ```  
-    
+```{=latex}
+\newpage
+```    
 ## Structure        
 Entries follow an X.Y.Z hierarchy:        
 > X: Overall Category (e.g., User Management, Patient Management).        
@@ -178,7 +180,11 @@ Entries follow an X.Y.Z hierarchy:
 `0 | success`      
       
 ---      
-      
+
+```{=latex}
+\newpage
+```  
+
 ### 1.1.2 - User Login        
 > Description: Logs in a user        
 > Endpoint: `POST /api/um/ac/login`        
@@ -230,7 +236,11 @@ Entries follow an X.Y.Z hierarchy:
 ```      
 > Note: `pfp` is optional.      
       
----      
+---  
+
+```{=latex}
+\newpage
+```  
       
 ## 1.4 - User Password Reset        
 > Description: Resets a user's password        
@@ -248,7 +258,7 @@ Entries follow an X.Y.Z hierarchy:
 > Exp. Response:        
 `0 | success`      
       
----      
+---    
     
 # 2.y.z - Patient Management        
 > Note: All admins referred to in section 2 are clinic admins.      
@@ -388,7 +398,11 @@ Entries follow an X.Y.Z hierarchy:
 }      
 ```      
       
----      
+---
+
+```{=latex}
+\newpage
+```  
       
 ### 3.1.4 - Diagnosis Fetching        
 > Description: Fetches the diagnoses for a patient        
@@ -437,7 +451,11 @@ Entries follow an X.Y.Z hierarchy:
 }      
 ```      
       
----      
+---
+
+```{=latex}
+\newpage
+```  
       
 ### 3.1.6 - Person Info Fetching        
 > Description: Fetches personal/demographic information for a patient        
@@ -703,7 +721,11 @@ Entries follow an X.Y.Z hierarchy:
 ```  
 ### 3.4.2 - Appointment creation  
 use endpoint 3.2.5 appointment updating   
-  
+
+```{=latex}
+\newpage
+```  
+
 ## 3.5 - permission management  
 ### 3.5.1 - Permission updating  
 \> Description: Permissions for foreign doctors  
@@ -749,7 +771,12 @@ use endpoint 3.2.5 appointment updating
         "perm int" : "int" //each bit in the integer will be treated as a bool  
     },  
 }  
+```
+
+```{=latex}
+\newpage
 ```  
+
 ### 3.5.3 - Permission requesting  
 \> Description: Allows foreign doctors to request permissions on given patient  
 \> Endpoint: `POST /api/dpm/perm/request/` //pt  
@@ -792,7 +819,11 @@ use endpoint 3.2.5 appointment updating
     }  
 }  
 ```  
-  
+
+```{=latex}
+\newpage
+```   
+
 ## 3.6 - Doctor timeline  
   
 ### 3.6.1 - Timeline fetching  
@@ -833,7 +864,9 @@ use endpoint 3.2.5 appointment updating
 > Exp. Response:  
 `0 | success`    
   
-  
+```{=latex}
+\newpage
+```   
   
 # 4.y.z - Sysadmin        
 > Note: For security reasons, sysadmins should only be creatable via CLI.        
@@ -988,7 +1021,11 @@ Errors are categorised as X.YY, where X is the category and YY is the error numb
     2.10 — Date of birth invalid or out of range      
     2.11 — Patient already assigned to doctor      
     2.12 — Doctor does not belong to specified clinic      
-    
+
+```{=latex}
+\newpage
+```  
+
 > 3.YY — Connection / infrastructure error      
       
     3.01 — Request timeout      
